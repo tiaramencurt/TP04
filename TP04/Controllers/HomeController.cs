@@ -17,4 +17,12 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult Partida()
+    {
+        Ahorcado.InicializarAhorcado();
+        ViewBag.palabra = Ahorcado.palabraElegida;
+        ViewBag.letrasUsadas = Ahorcado.letrasUsadas;
+        ViewBag.intentos = Ahorcado.intentos;
+        return View("");
+    }
 }
