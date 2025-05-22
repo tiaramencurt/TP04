@@ -17,12 +17,35 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult Partida()
+    public IActionResult InicializarPartida()
     {
-        Ahorcado.InicializarAhorcado();
-        ViewBag.palabra = Ahorcado.palabraElegida;
+        Ahorcado.InicializarPartida();
+        ViewBag.palabra = Ahorcado.ArmarPalabra();
         ViewBag.letrasUsadas = Ahorcado.letrasUsadas;
         ViewBag.intentos = Ahorcado.intentos;
-        return View("");
+		ViewBag.Ganar = Ahorcado.ganar;
+        ViewBag.Perder = Ahorcado.perder;
+        return View("Juego");
     }
+	[HttpPost]
+	public IActionResult IngresarLetra(char letra)
+    {
+        ViewBag.palabra = Ahorcado.ArriesgarLetra(letra);
+        ViewBag.letrasUsadas = Ahorcado.letrasUsadas;
+        ViewBag.intentos = Ahorcado.intentos;
+		ViewBag.Ganar = Ahorcado.ganar;
+        ViewBag.Perder = Ahorcado.perder;
+        return View("Juego");
+    }
+	[HttpPost]
+        public IActionResult IngresarPalabra(string palabraArriesgar)
+        {
+            Ahorcado.ArriesgarPalabra(palabraArriesgar);
+			ViewBag.Palabra = Ahorcado.ArmarPalabra();
+            ViewBag.Intentos = Ahorcado.intentos;
+            ViewBag.LetrasUsadas = Ahorcado.letrasUsadas;
+            ViewBag.Ganar = Ahorcado.ganar;
+            ViewBag.Perder = Ahorcado.perder;
+            return View("Resultado");
+        }
 }

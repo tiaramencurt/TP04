@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,32 +10,54 @@ namespace TP04.Models
         public static string palabraElegida { get; private set; }
         public static List<char> letrasUsadas { get; private set; }
         public static int intentos { get; private set; }
-        public static void InicializarAhorcado()
+		public static bool ganar { get; private set; }
+		public static bool perder { get; private set; }
+        public static void InicializarPartida()
         {
             palabras = new List<string>{"caminar", "botella", "maestro", "reunion", "apuntes", "cosecha"};
             Random rnd = new Random();
             palabraElegida = palabras[rnd.Next(0, palabras.Count)];
             letrasUsadas = new List<char>();
             intentos = 0;
+			ganar = false;
+			perder = false;
         }
-        public static void Jugar(char letra)
+        public static string ArriesgarLetra(char letra)
         {
+            string intentoPalabra = null;
             if(!BuscarLetra(letrasUsadas, letra))
             {
                 letrasUsadas.Add(letra);
                 intentos++;
-                string intentoPalabra = ArmarPalabra();
-                
+                intentoPalabra = ArmarPalabra();
+				if(intentoPalabra == palabraElegida)
+				{
+					ganar = true;
+				}
             }
+	    return intentoPalabra;
         }
+		public static void ArriesgarPalabra(string palabra)
+		{
+			if(palabra == palabraElegida)
+			{
+				ganar = true;
+			}else{
+				perder = true;
+			}
+		}
         public static string ArmarPalabra()
         {
-            for (int i = 0; i < palabraElegida.Length; i++)
+            string resultado = "";
+            foreach (char c in palabraElegida)
             {
-                palabraElegida.Contains(letra);
+                if (letrasUsadas.Contains(c))
+                    resultado += c;
+                else
+                    resultado += "_";
             }
+			return resultado;
         }
-        public static 
         public static bool BuscarLetra(List<char> lista, char letra)
         {
             int i = 0;
