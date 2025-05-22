@@ -19,7 +19,37 @@ namespace TP04.Models
             letrasUsadas = new List<char>();
             intentos = 0;
         }
-        public static char .
-        public 
+        public static void Jugar(char letra)
+        {
+            if(!BuscarLetra(letrasUsadas, letra))
+            {
+                letrasUsadas.Add(letra);
+                intentos++;
+                string intentoPalabra = ArmarPalabra();
+                
+            }
+        }
+        public static string ArmarPalabra()
+        {
+            for (int i = 0; i < palabraElegida.Length; i++)
+            {
+                palabraElegida.Contains(letra);
+            }
+        }
+        public static 
+        public static bool BuscarLetra(List<char> lista, char letra)
+        {
+            int i = 0;
+            bool esta = false;
+            while (i < lista.Count && lista[i] != letra)
+            {
+                i++;
+            }
+            if(lista[i] != letra)
+            {
+                esta = true;
+            }
+            return esta;
+        }
     }
 }
