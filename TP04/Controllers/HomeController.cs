@@ -20,32 +20,29 @@ public class HomeController : Controller
     public IActionResult InicializarPartida()
     {
         Ahorcado.InicializarPartida();
-        ViewBag.palabra = Ahorcado.ArmarPalabra();
+        ViewBag.palabraMostrar = Ahorcado.ArmarPalabra();
         ViewBag.letrasUsadas = Ahorcado.letrasUsadas;
         ViewBag.intentos = Ahorcado.intentos;
-		ViewBag.Ganar = Ahorcado.ganar;
-        ViewBag.Perder = Ahorcado.perder;
         return View("Juego");
     }
-	[HttpPost]
-	public IActionResult IngresarLetra(char letra)
+    public IActionResult ArriesgarLetra(char c)
     {
-        ViewBag.palabra = Ahorcado.ArriesgarLetra(letra);
-        ViewBag.letrasUsadas = Ahorcado.letrasUsadas;
-        ViewBag.intentos = Ahorcado.intentos;
-		ViewBag.Ganar = Ahorcado.ganar;
-        ViewBag.Perder = Ahorcado.perder;
-        return View("Juego");
-    }
-	[HttpPost]
-        public IActionResult IngresarPalabra(string palabraArriesgar)
-        {
-            Ahorcado.ArriesgarPalabra(palabraArriesgar);
-			ViewBag.Palabra = Ahorcado.ArmarPalabra();
-            ViewBag.Intentos = Ahorcado.intentos;
-            ViewBag.LetrasUsadas = Ahorcado.letrasUsadas;
-            ViewBag.Ganar = Ahorcado.ganar;
-            ViewBag.Perder = Ahorcado.perder;
+       ViewBag.palabraMostrar = Ahorcado.ArriesgarLetra(c);
+       ViewBag.letrasUsadas = Ahorcado.letrasUsadas;
+       ViewBag.intentos = Ahorcado.intentos;
+       if (!ViewBag.palabraMostrar.Contains("_"))
+       {
+            ViewBag.mensaje = "Ganaste";
             return View("Resultado");
-        }
+       }
+       return View("Juego");
+    }
+    public IActionResult ArriesgarPalabra(string palabra)
+    {
+       ViewBag.Resultado = Ahorcado.ArriesgarPalabra(palabra);
+       ViewBag.PalabraMostrar = Ahorcado.ArmarPalabra();
+       ViewBag.letrasUsadas = Ahorcado.letrasUsadas;
+       ViewBag.intentos = Ahorcado.intentos;
+       return View("Resultado");
+    }
 }

@@ -21,6 +21,7 @@ namespace TP04.Models
         public static string ArriesgarLetra(char letra)
         {
             string intentoPalabra = null;
+            letra = Char.ToLower(letra);
             if(!letrasUsadas.Contains(letra))
             {
                 letrasUsadas.Add(letra);
@@ -31,7 +32,7 @@ namespace TP04.Models
         }
 		public static bool ArriesgarPalabra(string palabra)
 		{
-            return palabra == palabraElegida;
+            return palabra.ToLower() == palabraElegida;
 		}
         public static string ArmarPalabra()
         {
