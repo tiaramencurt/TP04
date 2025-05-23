@@ -23,6 +23,7 @@ public class HomeController : Controller
         ViewBag.palabraMostrar = Ahorcado.ArmarPalabra();
         ViewBag.letrasUsadas = Ahorcado.letrasUsadas;
         ViewBag.intentos = Ahorcado.intentos;
+        ViewBag.palabraElegida = Ahorcado.palabraElegida;
         return View("Juego");
     }
     public IActionResult ArriesgarLetra(char c)
@@ -30,19 +31,21 @@ public class HomeController : Controller
        ViewBag.palabraMostrar = Ahorcado.ArriesgarLetra(c);
        ViewBag.letrasUsadas = Ahorcado.letrasUsadas;
        ViewBag.intentos = Ahorcado.intentos;
+       ViewBag.palabraElegida = Ahorcado.palabraElegida;
        if (!ViewBag.palabraMostrar.Contains("_"))
        {
-            ViewBag.mensaje = "Ganaste";
+            ViewBag.resultado = true;
             return View("Resultado");
        }
        return View("Juego");
     }
     public IActionResult ArriesgarPalabra(string palabra)
     {
-       ViewBag.Resultado = Ahorcado.ArriesgarPalabra(palabra);
-       ViewBag.PalabraMostrar = Ahorcado.ArmarPalabra();
+       ViewBag.resultado = Ahorcado.ArriesgarPalabra(palabra);
+       ViewBag.palabraMostrar = Ahorcado.ArmarPalabra();
        ViewBag.letrasUsadas = Ahorcado.letrasUsadas;
        ViewBag.intentos = Ahorcado.intentos;
+       ViewBag.palabraElegida = Ahorcado.palabraElegida;
        return View("Resultado");
     }
 }

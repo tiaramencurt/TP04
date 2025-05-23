@@ -9,9 +9,21 @@ html {
   }
 }
 
+header
+{
+  text-align: center;
+  border: 1px solid black;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
 body {
   margin: 10px;
   padding: 10px;
+}
+
+ul .correctas{
+  color: green;
 }
 
 

@@ -1,3 +1,28 @@
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Resultado";
 }
+@if(ViewBag.resultado)
+{
+    <h1>¡Ganaste!</h1>
+}else
+{
+    <h1>¡Perdiste!</h1>
+}
+@foreach(char c in ViewBag.palabraMostrar)
+{
+    <h2>@(c + " ")</h2>
+}
+<h2>Letras utilizadas</h2>
+<ul class="correctas"></ul>
+<ul class="incorrectas"></ul>
+@foreach(char c in ViewBag.letrasUsadas)
+{
+    if(ViewBag.palabraElegida.Contains(c))
+    {
+        <li class="correctas">@(" " + c)</li>
+    }else
+    {
+        <li class="incorrectas">@(" " + c)</li>
+    }
+}
+<h3>Intentos @ViewBag.intentos</h3>

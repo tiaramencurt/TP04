@@ -26,8 +26,8 @@ namespace TP04.Models
             {
                 letrasUsadas.Add(letra);
                 intentos++;
-                intentoPalabra = ArmarPalabra();
             }
+            intentoPalabra = ArmarPalabra();
 	    return intentoPalabra;
         }
 		public static bool ArriesgarPalabra(string palabra)
