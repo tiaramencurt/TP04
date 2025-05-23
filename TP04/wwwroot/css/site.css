@@ -12,24 +12,97 @@ html {
 header
 {
   text-align: center;
-  border: 1px solid black;
-  margin-left: 20%;
-  margin-right: 20%;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  margin-bottom: 2%;
+  padding: 2%;
+  background-color: rgb(199, 62, 108);
+}
+
+header a
+{
+  text-decoration: none;
+  font-size: 3em;
+  color: pink;
 }
 
 body {
-  margin: 10px;
-  padding: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #ffe6f0;
+  color: #660033;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
-ul .correctas{
-  color: green;
+h1, h2, h3 {
+  color: #b30059;
 }
 
+a {
+  display: inline-block;
+  background-color: #ff66a3;
+  color: white;
+  padding: 12px 24px;
+  margin-top: 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
 
-footer {
-  margin-top: 10px;
+a:hover {
+  background-color: #e60073;
+}
+
+ul.palabra {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  list-style-type: none;
+  margin: 20px 0;
+}
+
+ul.palabra li {
+  font-size: 2em;
+  padding: 0 10px;
+  border-bottom: 2px solid #ff99cc;
+}
+
+ul li.correctas {
+  color: #008000;
+  font-weight: bold;
+  list-style: none;
+}
+
+ul li.incorrectas {
+  color: #cc0000;
+  font-weight: bold;
+  list-style: none;
+}
+
+form {
+  margin: 20px 0;
+}
+
+input[type="text"] {
   padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  border: 2px solid #ffb3d9;
+  border-radius: 5px;
+  width: 150px;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #ff66a3;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: #e60073;
 }

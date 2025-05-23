@@ -1,27 +1,25 @@
 @{
     ViewData["Title"] = "Juego";
 }
+<ul class="palabra">
 @foreach(char c in ViewBag.palabraMostrar)
 {
-    <h2>@(c + " ")</h2>
+    <li>@(c + " ")</li>
 }
+</ul>
 <h2>Letras utilizadas</h2>
-<ul class="correctas"></ul>
+<ul>
 @foreach(char c in ViewBag.letrasUsadas)
 {
     if(ViewBag.palabraElegida.Contains(c))
     {
-        <li>@(" " + c)</li>
-    }
-}
-<ul class="incorrectas"></ul>
-@foreach(char c in ViewBag.letrasUsadas)
-{
-    if(!ViewBag.palabraElegida.Contains(c))
+        <li class="correctas">@(" " + c)</li>
+    }else
     {
-        <li>@(" " + c)</li>
+        <li class="incorrectas">@(" " + c)</li>
     }
 }
+</ul>
 <h3>Intentos @ViewBag.intentos</h3>
 <p>Nueva letra</p>
 <form action='@Url.Action("ArriesgarLetra", "Home")' method='POST'>
